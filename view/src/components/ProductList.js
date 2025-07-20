@@ -129,7 +129,10 @@ function ProductList({ search, filter }) {
                 boxShadow: "0 1px 4px rgba(25,118,210,0.08)",
                 transition: "background 0.2s, box-shadow 0.2s"
               }}
-              onClick={e => handleAddToCart(p, e)}
+              onClick={e => {
+                e.stopPropagation();
+                navigate(`/product/${p._id || p.id}`);
+              }}
               onMouseEnter={e => {
                 e.currentTarget.style.background = "#1256a3";
                 e.currentTarget.style.boxShadow = "0 2px 8px rgba(25,118,210,0.18)";
