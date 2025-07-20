@@ -29,6 +29,44 @@ function ProductDetail() {
   const sizes = spec.sizes || [];
   const maxQty = spec.quantity || 0;
 
+  const handleAddToCart = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || !user._id) {
+      alert("Bạn cần đăng nhập để thêm vào giỏ hàng!");
+      return;
+    }
+    if (!selectedSize) {
+      alert("Vui lòng chọn size!");
+      return;
+    }
+    const cartItem = {
+      userId: user._id,
+      products: [{
+        productId: product._id,
+        name: product.name,
+        price: product.price,
+        quantity: quantity,
+        color: spec.title || '',
+        size: selectedSize
+      }]
+    };
+    try {
+      const res = await fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cartItem)
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert("Đã thêm vào giỏ hàng!");
+      } else {
+        alert(data.message || "Thêm vào giỏ hàng thất bại!");
+      }
+    } catch (err) {
+      alert("Lỗi kết nối server!");
+    }
+  };
+
   return (
     <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", gap: 40, alignItems: "flex-start" }}>
       {/* Ảnh lớn + thumbnails */}
@@ -122,6 +160,7 @@ function ProductDetail() {
         <button
           style={{ background: "#4f46e5", color: "#fff", fontWeight: 600, fontSize: 18, border: "none", borderRadius: 8, padding: "12px 0", width: 240, cursor: "pointer" }}
           disabled={maxQty === 0 || !selectedSize}
+          onClick={handleAddToCart}
         >
           Add to cart
         </button>
