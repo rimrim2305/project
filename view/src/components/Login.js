@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ function Login({ onLoginSuccess }) {
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const validate = () => {
     let valid = true;
@@ -45,6 +47,7 @@ function Login({ onLoginSuccess }) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
           if (onLoginSuccess) onLoginSuccess(data.user);
+          setTimeout(() => navigate("/"), 500); // Chuyển về trang chủ sau khi đăng nhập
         }
       } else {
         setMessage(data.message || "Đăng nhập thất bại");

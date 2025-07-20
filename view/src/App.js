@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import ProductDetail from "./components/ProductDetail";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -33,8 +34,8 @@ function App() {
           <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
         </Routes>
       </div>
     </Router>
