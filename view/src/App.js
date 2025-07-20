@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import ProductDetail from "./components/ProductDetail";
 import Profile from "./components/Profile";
+import Cart from "./components/Cart";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </Router>

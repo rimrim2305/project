@@ -20,6 +20,41 @@ function ProductList({ search, filter }) {
       .catch(() => setProducts([]));
   }, [search, filter]);
 
+  const handleAddToCart = async (product, e) => {
+    e.stopPropagation();
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || !user._id) {
+      alert("Bạn cần đăng nhập để thêm vào giỏ hàng!");
+      return;
+    }
+    const cartItem = {
+      userId: user._id,
+      products: [{
+        productId: product._id,
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+        color: product.specs && product.specs[0] ? product.specs[0].title : '',
+        size: product.specs && product.specs[0] && product.specs[0].sizes && product.specs[0].sizes[0] ? product.specs[0].sizes[0] : ''
+      }]
+    };
+    try {
+      const res = await fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cartItem)
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert("Đã thêm vào giỏ hàng!");
+      } else {
+        alert(data.message || "Thêm vào giỏ hàng thất bại!");
+      }
+    } catch (err) {
+      alert("Lỗi kết nối server!");
+    }
+  };
+
   return (
     <div>
       <h2 style={{ margin: "24px 0 16px 0", fontWeight: 700, fontSize: 24 }}>New Arrivals</h2>
@@ -94,10 +129,7 @@ function ProductList({ search, filter }) {
                 boxShadow: "0 1px 4px rgba(25,118,210,0.08)",
                 transition: "background 0.2s, box-shadow 0.2s"
               }}
-              onClick={e => {
-                e.stopPropagation();
-                alert("Chức năng thêm vào giỏ hàng sẽ được phát triển!");
-              }}
+              onClick={e => handleAddToCart(p, e)}
               onMouseEnter={e => {
                 e.currentTarget.style.background = "#1256a3";
                 e.currentTarget.style.boxShadow = "0 2px 8px rgba(25,118,210,0.18)";

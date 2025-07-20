@@ -19,12 +19,12 @@ function Navbar({ user, onSignOut }) {
           <Link to="/profile" style={{ color: "#fff", textDecoration: "none", fontSize: 17, fontWeight: 500 }}>Profile</Link>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+          <Link to="/cart" style={{ color: "#fff", textDecoration: "none", fontSize: 22, marginRight: 8 }} title="Giỏ hàng">
+            <svg width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </Link>
           {user ? (
             <>
               <span style={{ color: "#fff", fontWeight: 700, fontSize: 16 }}>Welcome, {user.name}</span>
-              <span style={{ color: "#fff", fontSize: 22, marginRight: 4 }}>
-                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-              </span>
               <button
                 onClick={onSignOut}
                 style={{
