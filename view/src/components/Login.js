@@ -47,7 +47,11 @@ function Login({ onLoginSuccess }) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
           if (onLoginSuccess) onLoginSuccess(data.user);
-          setTimeout(() => navigate("/"), 500); // Chuyển về trang chủ sau khi đăng nhập
+          if (data.user.role === "admin") {
+            setTimeout(() => navigate("/admin"), 500);
+          } else {
+            setTimeout(() => navigate("/"), 500);
+          }
         }
       } else {
         setMessage(data.message || "Đăng nhập thất bại");
