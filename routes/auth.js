@@ -2,6 +2,7 @@ import express from "express";
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { forgotPassword } from "../controllers/authController.js";
 const router = express.Router();
 
 const JWT_SECRET = "your_jwt_secret"; // Nên lưu vào biến môi trường thực tế
@@ -49,9 +50,7 @@ router.post("/logout", (req, res) => {
 });
 
 // Quên mật khẩu
-router.post("/forgot-password", async (req, res) => {
-  res.json({ message: "Đã gửi email đặt lại mật khẩu" });
-});
+router.post("/forgot-password", forgotPassword);
 
 // Đổi mật khẩu
 router.post("/change-password", async (req, res) => {

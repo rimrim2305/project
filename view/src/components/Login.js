@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ function Login({ onLoginSuccess }) {
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const validate = () => {
     let valid = true;
@@ -44,11 +46,8 @@ function Login({ onLoginSuccess }) {
         if (data.token) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
-          if (data.user.role === "admin") {
-            window.location.href = "/admin";
-          } else {
-            if (onLoginSuccess) onLoginSuccess(data.user);
-          }
+          if (onLoginSuccess) onLoginSuccess(data.user);
+          setTimeout(() => navigate("/"), 500); // Chuyển về trang chủ sau khi đăng nhập
         }
       } else {
         setMessage(data.message || "Đăng nhập thất bại");
@@ -140,7 +139,7 @@ function Login({ onLoginSuccess }) {
         </div>
         {/* Quên mật khẩu */}
         <div style={{ textAlign: "right", marginTop: -10, marginBottom: 2 }}>
-          <button type="button" style={{ color: "#1976d2", fontSize: 14, textDecoration: "underline", fontWeight: 500, background: "none", border: "none", padding: 0, cursor: "pointer" }} onClick={() => alert("Chức năng quên mật khẩu sẽ phát triển sau!")}>Quên mật khẩu?</button>
+          <Link to="/forgot-password" style={{ color: "#1976d2", fontSize: 14, textDecoration: "underline", fontWeight: 500, background: "none", border: "none", padding: 0, cursor: "pointer" }}>Quên mật khẩu?</Link>
         </div>
         <button
           type="submit"

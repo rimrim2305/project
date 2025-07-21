@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProductList({ search, filter }) {
+function ProductList({ filter }) {
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState(""); // Local search state
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,6 +24,22 @@ function ProductList({ search, filter }) {
   return (
     <div>
       <h2 style={{ margin: "24px 0 16px 0", fontWeight: 700, fontSize: 24 }}>New Arrivals</h2>
+      {/* Search bar */}
+      <div style={{ marginBottom: 24 }}>
+        <input
+          type="text"
+          placeholder="Tìm kiếm sản phẩm..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{
+            width: 320,
+            padding: "8px 16px",
+            borderRadius: 8,
+            border: "1px solid #ccc",
+            fontSize: 16
+          }}
+        />
+      </div>
       <div
         style={{
           display: "grid",
@@ -96,7 +113,7 @@ function ProductList({ search, filter }) {
               }}
               onClick={e => {
                 e.stopPropagation();
-                alert("Chức năng thêm vào giỏ hàng sẽ được phát triển!");
+                navigate(`/product/${p._id || p.id}`);
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.background = "#1256a3";
@@ -116,4 +133,4 @@ function ProductList({ search, filter }) {
   );
 }
 
-export default ProductList; 
+export default ProductList;
