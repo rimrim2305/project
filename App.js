@@ -10,6 +10,7 @@ import wishlistRoutes from "./routes/wishlist.js";
 import adminRoutes from "./routes/admin.js";
 import adminOnlyRoutes from "./routes/adminOnly.js";
 import User from "./models/User.js";
+import clothingRoutes from "./routes/clothing.js";
 
 const app = express();
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/wishlist", wishlistRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/clothing", clothingRoutes);
 app.use("/api", adminOnlyRoutes); // Route ví dụ chỉ cho admin
 
 // Trang mặc định
