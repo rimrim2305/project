@@ -27,12 +27,16 @@ export const login = async (req, res) => {
   }
 };
 
-export const logout = async (req, res) => {
-  res.json({ message: "Đăng xuất thành công" });
+export const forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) return res.status(404).json({ message: "Không tìm thấy email này!" });
+  // Giả lập gửi email reset
+  res.json({ message: "Đã gửi email đặt lại mật khẩu (giả lập). Vui lòng kiểm tra email!" });
 };
 
-export const forgotPassword = async (req, res) => {
-  res.json({ message: "Đã gửi email đặt lại mật khẩu" });
+export const logout = async (req, res) => {
+  res.json({ message: "Đăng xuất thành công" });
 };
 
 export const changePassword = async (req, res) => {
