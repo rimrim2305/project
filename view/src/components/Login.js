@@ -70,8 +70,8 @@ function Login({ onLoginSuccess }) {
         style={{
           background: "#fff",
           borderRadius: 18,
-          boxShadow: "0 4px 32px rgba(25,118,210,0.10)",
-          padding: "40px 32px 32px 32px",
+          boxShadow: "0 4px 32px rgba(25,118,210,0.13)",
+          padding: "40px 36px 32px 36px",
           minWidth: 340,
           maxWidth: 400,
           width: "100%",
@@ -80,53 +80,57 @@ function Login({ onLoginSuccess }) {
           gap: 22
         }}
       >
-        {/* Logo và tiêu đề phụ */}
+        {/* Tiêu đề */}
         <div style={{ textAlign: "center", marginBottom: 8 }}>
-          <img src="https://1000logos.net/wp-content/uploads/2017/03/Nike-Logo-1971-now.png" alt="logo" style={{ width: 54, marginBottom: 8 }} />
-          <div style={{ fontWeight: 700, fontSize: 18, color: "#1976d2" }}>Chào mừng bạn trở lại!</div>
-          <div style={{ color: "#888", fontSize: 15, marginTop: 2 }}>Đăng nhập để tiếp tục mua sắm cùng Nike Marketplace</div>
+          <div style={{ fontWeight: 800, fontSize: 28, color: "#1976d2", marginBottom: 2 }}>Đăng nhập</div>
+          <div style={{ color: "#888", fontSize: 15, marginTop: 2 }}>Chào mừng bạn trở lại với Fashionista!</div>
         </div>
         {/* Email */}
-        <div style={{ position: "relative" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <label style={{ fontWeight: 600, fontSize: 15 }}>Email</label>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Nhập email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
             style={{
-              width: "100%",
-              padding: "12px 44px 12px 16px",
+              padding: "10px 16px",
               borderRadius: 8,
-              border: emailError ? "1.5px solid #d32f2f" : "1px solid #bdbdbd",
+              border: emailError ? "1.5px solid #d32f2f" : "1.5px solid #bdbdbd",
               fontSize: 16,
-              outline: "none"
+              outline: "none",
+              transition: "border 0.2s",
+              boxShadow: "0 1px 6px rgba(25,118,210,0.04)"
             }}
+            onFocus={e => e.target.style.border = "1.5px solid #1976d2"}
+            onBlur={e => e.target.style.border = emailError ? "1.5px solid #d32f2f" : "1.5px solid #bdbdbd"}
           />
-          <span style={{ position: "absolute", right: 16, top: 12, color: "#1976d2", fontSize: 18 }}>
-            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg>
-          </span>
           {emailError && <div style={{ color: "#d32f2f", fontSize: 13, marginTop: 2, marginLeft: 2 }}>{emailError}</div>}
         </div>
         {/* Password */}
-        <div style={{ position: "relative" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, position: "relative" }}>
+          <label style={{ fontWeight: 600, fontSize: 15 }}>Mật khẩu</label>
           <input
             type={showPassword ? "text" : "password"}
-            placeholder="Mật khẩu"
+            placeholder="Nhập mật khẩu"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
             style={{
-              width: "100%",
-              padding: "12px 44px 12px 16px",
+              padding: "10px 44px 10px 16px",
               borderRadius: 8,
-              border: passwordError ? "1.5px solid #d32f2f" : "1px solid #bdbdbd",
+              border: passwordError ? "1.5px solid #d32f2f" : "1.5px solid #bdbdbd",
               fontSize: 16,
-              outline: "none"
+              outline: "none",
+              transition: "border 0.2s",
+              boxShadow: "0 1px 6px rgba(25,118,210,0.04)"
             }}
+            onFocus={e => e.target.style.border = "1.5px solid #1976d2"}
+            onBlur={e => e.target.style.border = passwordError ? "1.5px solid #d32f2f" : "1.5px solid #bdbdbd"}
           />
           <span
-            style={{ position: "absolute", right: 38, top: 12, color: "#1976d2", fontSize: 18, cursor: "pointer" }}
+            style={{ position: "absolute", right: 16, top: 38, color: "#1976d2", fontSize: 18, cursor: "pointer" }}
             onClick={() => setShowPassword((v) => !v)}
             title={showPassword ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
           >
@@ -135,9 +139,6 @@ function Login({ onLoginSuccess }) {
             ) : (
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="7"/><circle cx="12" cy="12" r="3"/></svg>
             )}
-          </span>
-          <span style={{ position: "absolute", right: 16, top: 12, color: "#1976d2", fontSize: 18 }}>
-            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
           </span>
           {passwordError && <div style={{ color: "#d32f2f", fontSize: 13, marginTop: 2, marginLeft: 2 }}>{passwordError}</div>}
         </div>
@@ -152,14 +153,26 @@ function Login({ onLoginSuccess }) {
             background: loading ? "#b0bec5" : "linear-gradient(90deg,#1976d2 60%,#42a5f5 100%)",
             color: "#fff",
             border: "none",
-            borderRadius: 8,
+            borderRadius: 24,
             padding: "12px 0",
             fontWeight: 700,
-            fontSize: 17,
+            fontSize: 18,
             cursor: loading ? "not-allowed" : "pointer",
             marginTop: 8,
             boxShadow: "0 2px 8px rgba(25,118,210,0.10)",
             transition: "background 0.2s"
+          }}
+          onMouseEnter={e => {
+            if (!loading) {
+              e.currentTarget.style.background = "#1256a3";
+              e.currentTarget.style.boxShadow = "0 4px 16px rgba(25,118,210,0.18)";
+            }
+          }}
+          onMouseLeave={e => {
+            if (!loading) {
+              e.currentTarget.style.background = "linear-gradient(90deg,#1976d2 60%,#42a5f5 100%)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(25,118,210,0.10)";
+            }
           }}
         >
           {loading ? "Đang đăng nhập..." : "Đăng nhập"}
@@ -168,8 +181,12 @@ function Login({ onLoginSuccess }) {
           <div style={{
             marginTop: 8,
             color: message.includes("thành công") ? "#388e3c" : "#d32f2f",
+            background: message.includes("thành công") ? "#e8f5e9" : "#ffebee",
+            borderRadius: 8,
+            padding: "10px 16px",
+            fontWeight: 600,
             textAlign: "center",
-            fontWeight: 500
+            fontSize: 15
           }}>{message}</div>
         )}
         {/* Đăng nhập Google (UI) */}
