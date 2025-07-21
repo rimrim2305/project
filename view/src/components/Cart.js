@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
 
   const fetchCart = async () => {
     if (!user || !user._id) {
@@ -115,8 +117,31 @@ function Cart() {
       <div style={{ textAlign: "right", marginTop: 24, fontWeight: 700, fontSize: 20 }}>
         Tổng tiền: {cart.products.reduce((sum, item) => sum + (item.price * item.quantity), 0).toLocaleString()} đ
       </div>
+<div style={{ textAlign: "right", marginTop: 16 }}>
+  <button
+    style={{
+      background: "#1976d2",
+      color: "#fff",
+      border: "none",
+      borderRadius: 8,
+      padding: "12px 32px",
+      fontWeight: 600,
+      fontSize: 18,
+      cursor: "pointer",
+      transition: "background 0.2s"
+    }}
+    onClick={() => {
+      localStorage.setItem("cart", JSON.stringify(cart)); // Lưu giỏ hàng
+      navigate("/checkout");
+    }}
+    onMouseEnter={e => e.currentTarget.style.background = "#1256a3"}
+    onMouseLeave={e => e.currentTarget.style.background = "#1976d2"}
+  >
+    Thanh toán
+  </button>
+</div>
     </div>
   );
 }
 
-export default Cart; 
+export default Cart;

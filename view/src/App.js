@@ -8,6 +8,8 @@ import ProductDetail from "./components/ProductDetail";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Checkout from "./components/Checkout"; 
+import Orders from "./components/Orders";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -36,6 +38,8 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+          <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} /> 
+          <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
         </Routes>
       </div>
     </Router>
