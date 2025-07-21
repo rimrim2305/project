@@ -12,6 +12,9 @@ import Checkout from "./components/Checkout";
 import Orders from "./components/Orders";
 import ForgotPassword from "./components/ForgotPassword";
 import AdminDashboard from "./components/AdminDashboard";
+import Wishlist from "./components/Wishlist";
+import Blog from "./components/Blog";
+import BlogDetail from "./components/BlogDetail";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -43,6 +46,9 @@ function App() {
           <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
           <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
           <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+          <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/admin" element={user && user.role === "admin" ? <AdminDashboard user={user} /> : <Navigate to="/" />} />
         </Routes>
       </div>
