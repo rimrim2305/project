@@ -44,4 +44,26 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Sửa sản phẩm
+router.put("/:id", async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!product) return res.status(404).json({ message: "Không tìm thấy sản phẩm" });
+    res.json({ message: "Cập nhật thành công", product });
+  } catch (err) {
+    res.status(400).json({ message: "Lỗi cập nhật", error: err.message });
+  }
+});
+
+// Xóa sản phẩm
+router.delete("/:id", async (req, res) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    if (!product) return res.status(404).json({ message: "Không tìm thấy sản phẩm" });
+    res.json({ message: "Xóa thành công" });
+  } catch (err) {
+    res.status(400).json({ message: "Lỗi xóa", error: err.message });
+  }
+});
+
 export default router;
