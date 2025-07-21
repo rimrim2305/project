@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import ProductDetail from "./components/ProductDetail";
 import Profile from "./components/Profile";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   const [user, setUser] = useState(() => {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={user && user.role === "admin" ? <AdminDashboard user={user} /> : <Navigate to="/" />} />
         </Routes>
       </div>
     </Router>

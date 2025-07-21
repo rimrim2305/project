@@ -44,7 +44,11 @@ function Login({ onLoginSuccess }) {
         if (data.token) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
-          if (onLoginSuccess) onLoginSuccess(data.user);
+          if (data.user.role === "admin") {
+            window.location.href = "/admin";
+          } else {
+            if (onLoginSuccess) onLoginSuccess(data.user);
+          }
         }
       } else {
         setMessage(data.message || "Đăng nhập thất bại");
