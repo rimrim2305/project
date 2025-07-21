@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProductList({ search, filter }) {
+function ProductList({ filter }) {
   const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState(""); // Local search state
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,44 +21,25 @@ function ProductList({ search, filter }) {
       .catch(() => setProducts([]));
   }, [search, filter]);
 
-  const handleAddToCart = async (product, e) => {
-    e.stopPropagation();
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user || !user._id) {
-      alert("Bạn cần đăng nhập để thêm vào giỏ hàng!");
-      return;
-    }
-    const cartItem = {
-      userId: user._id,
-      products: [{
-        productId: product._id,
-        name: product.name,
-        price: product.price,
-        quantity: 1,
-        color: product.specs && product.specs[0] ? product.specs[0].title : '',
-        size: product.specs && product.specs[0] && product.specs[0].sizes && product.specs[0].sizes[0] ? product.specs[0].sizes[0] : ''
-      }]
-    };
-    try {
-      const res = await fetch("/api/cart", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(cartItem)
-      });
-      const data = await res.json();
-      if (res.ok) {
-        alert("Đã thêm vào giỏ hàng!");
-      } else {
-        alert(data.message || "Thêm vào giỏ hàng thất bại!");
-      }
-    } catch (err) {
-      alert("Lỗi kết nối server!");
-    }
-  };
-
   return (
     <div>
       <h2 style={{ margin: "24px 0 16px 0", fontWeight: 700, fontSize: 24 }}>New Arrivals</h2>
+      {/* Search bar */}
+      <div style={{ marginBottom: 24 }}>
+        <input
+          type="text"
+          placeholder="Tìm kiếm sản phẩm..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{
+            width: 320,
+            padding: "8px 16px",
+            borderRadius: 8,
+            border: "1px solid #ccc",
+            fontSize: 16
+          }}
+        />
+      </div>
       <div
         style={{
           display: "grid",
@@ -151,4 +133,4 @@ function ProductList({ search, filter }) {
   );
 }
 
-export default ProductList; 
+export default ProductList;
