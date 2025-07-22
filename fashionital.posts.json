@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "687922850d92780a154d7ccd"
+  },
+  "content": "Xu hướng áo thun nữ Hè 2025: Năng động, cá tính, dễ phối đồ.",
+  "imgSrc": "https://yourcdn.com/posts/summer2025.jpg",
+  "authorInfo": {
+    "authorID": "66234a3a3dcd7e6f99998888",
+    "authorEmail": "admin@fashionital.com",
+    "authorName": "Fashionital Admin",
+    "authorRole": "admin"
+  },
+  "like": [],
+  "comment": [],
+  "createdAt": "2025-07-17T07:04:00.000Z"
+}]

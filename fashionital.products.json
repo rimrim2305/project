@@ -1,0 +1,74 @@
+[{
+  "_id": {
+    "$oid": "687922600d92780a154d7cc4"
+  },
+  "SKU": "TSHIRT001",
+  "name": "Áo thun cotton basic nữ",
+  "price": 259000,
+  "category": "Áo thun",
+  "subCategory": "Nữ",
+  "description": "Áo thun cotton 100% co giãn, mềm mại.",
+  "rating": 4.5,
+  "specs": [
+    {
+      "colorId": "black",
+      "title": "Đen",
+      "quantity": 30,
+      "imgList": [
+        "https://yourcdn.com/products/tshirt001-black-1.jpg",
+        "https://yourcdn.com/products/tshirt001-black-2.jpg"
+      ]
+    },
+    {
+      "colorId": "white",
+      "title": "Trắng",
+      "quantity": 40,
+      "imgList": [
+        "https://yourcdn.com/products/tshirt001-white-1.jpg"
+      ]
+    }
+  ],
+  "tags": [
+    "áo thun",
+    "cotton",
+    "basic",
+    "nữ"
+  ],
+  "isActive": true,
+  "createdAt": "2025-07-17T07:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "687941ecc057d1b41c6ea568"
+  },
+  "SKU": "NK001",
+  "name": "Nike Cap",
+  "price": 350000,
+  "category": "Accessories",
+  "subCategory": "Hat",
+  "description": "Mũ lưỡi trai Nike chính hãng, chất liệu cao cấp.",
+  "rating": 4.5,
+  "specs": [
+    {
+      "colorId": "black",
+      "title": "Đen",
+      "quantity": 10,
+      "imgList": [
+        "https://i.pinimg.com/736x/1a/41/7a/1a417a79f0430bc5e91a710a59078315.jpg"
+      ]
+    }
+  ],
+  "tags": [
+    "nike",
+    "cap",
+    "accessories"
+  ],
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-17T18:33:16.090Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T18:33:16.090Z"
+  },
+  "__v": 0
+}]

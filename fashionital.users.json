@@ -1,0 +1,101 @@
+[{
+  "_id": {
+    "$oid": "6879223f0d92780a154d7cc1"
+  },
+  "email": "nghia@gmail.com",
+  "password": "$2a$12$bA8hf0U0mavJBw6ELDS05OcbAn0.WiIoIvdbuZlr7d.l8kVI92vxS",
+  "avatarImg": "https://...",
+  "name": "nghia",
+  "dob": "1996-05-20T00:00:00.000Z",
+  "country": "Vietnam",
+  "gender": "female",
+  "role": "user"
+},
+{
+  "_id": {
+    "$oid": "6879332f742f9ada138b0618"
+  },
+  "email": "testuser@gmail.com",
+  "password": "$2b$12$c9iFwO72lMiAhQ5rfMKGBeLGLFa1Jri.I30FzY0l94sF/.AbGUSaa",
+  "avatarImg": "https://icons.veryicon.com/png/o/miscellaneous/rookie-official-icon-gallery/225-default-avatar.png",
+  "name": "User",
+  "dob": {
+    "$date": "2000-01-01T00:00:00.000Z"
+  },
+  "country": "Vietnam",
+  "gender": "male",
+  "role": "user",
+  "createdAt": {
+    "$date": "2025-07-17T17:30:23.829Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T17:49:55.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687936f3742f9ada138b0627"
+  },
+  "email": "appvn147@gmail.com",
+  "password": "$2b$12$ge0aswFyBFyuY487KVEDKOTcetu/QzPIb4JSZbx9nK/eDF0XIXbHS",
+  "avatarImg": "https://icons.veryicon.com/png/o/miscellaneous/rookie-official-icon-gallery/225-default-avatar.png",
+  "name": "Nghia Phan",
+  "dob": {
+    "$date": "2003-11-14T00:00:00.000Z"
+  },
+  "country": "Việt Nam",
+  "gender": "male",
+  "role": "user",
+  "createdAt": {
+    "$date": "2025-07-17T17:46:27.909Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T17:49:55.696Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687938ec742f9ada138b063b"
+  },
+  "email": "1@gmail.com",
+  "password": "123456",
+  "avatarImg": "https://icons.veryicon.com/png/o/miscellaneous/rookie-official-icon-gallery/225-default-avatar.png",
+  "name": "Nghia Phan",
+  "dob": {
+    "$date": "2433-11-13T00:00:00.000Z"
+  },
+  "country": "Việt Nam",
+  "gender": "male",
+  "role": "user",
+  "createdAt": {
+    "$date": "2025-07-17T17:54:52.332Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T17:54:52.332Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68793a1490566a583f77f67b"
+  },
+  "email": "nghiane@gmail.com",
+  "password": "$2b$12$0NC3ae7eCOIHJkw551S33.JZdukYuaLpuccI8eyRqsYOuiMnAhUBu",
+  "avatarImg": "https://icons.veryicon.com/png/o/miscellaneous/rookie-official-icon-gallery/225-default-avatar.png",
+  "name": "Nghia Phan",
+  "dob": {
+    "$date": "2222-12-13T00:00:00.000Z"
+  },
+  "country": "Việt Nam",
+  "gender": "male",
+  "role": "user",
+  "createdAt": {
+    "$date": "2025-07-17T17:59:48.172Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T17:59:48.172Z"
+  },
+  "__v": 0
+}]
